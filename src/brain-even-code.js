@@ -3,7 +3,7 @@ import readlineSync from 'readline-sync';
 // Generate random number
 
 function generateRandomNum() {
-  return Math.floor(Math.random() * 100) + 1; 
+    return Math.floor(Math.random() * 100) + 1;
 }
 
 // Checking number is even
@@ -22,22 +22,23 @@ export default function playGame() {
 
     let correctAnswerCount = 0;
 
-    for(let i = 0; i < 3; i++){
+    for (let i = 0; i < 3; i++) {
         const randomNum = generateRandomNum();
         console.log(`Question: ${randomNum}`);
 
         const userAnswer = readlineSync.question('Your answer: ');
         const isUserAnswerCorrect = (isEvenNum(randomNum) && userAnswer.toLowerCase() === 'yes' || !isEvenNum(randomNum) && userAnswer.toLowerCase() === 'no');
 
-        if(isUserAnswerCorrect){
+        if (isUserAnswerCorrect) {
             console.log('Correct!');
             correctAnswerCount++;
         } else {
-            console.log(`'${userAnswer.toLowerCase()}' is wrong answer ;(. Correct answer was ${isEvenNum(randomNum) ? "'yes'" : "'no'"}\nLet's try again, ${name}!`);
+            console.log(`'${userAnswer.toLowerCase()}' is wrong answer ;(. Correct answer was ${isEvenNum(randomNum) ? "'yes'" : "'no'"}`)
+            console.log(`Let's try again, ${name}!`);
             break;
         }
     }
-    if(correctAnswerCount === 3){
+    if(correctAnswerCount === 3) {
         console.log(`Congratulations, ${name}!`);
     }
 }

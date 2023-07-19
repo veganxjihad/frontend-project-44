@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-import playGame from '../src/brain-even-code.js'
+import playGame from '../src/brain-even-code.js';
