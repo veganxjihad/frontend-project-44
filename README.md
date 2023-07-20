@@ -9,3 +9,6 @@
 
 ### Asciinema rec (Calculator on work) :
 (https://asciinema.org/a/e1lcsMKUnR3zs8JEEEIGXdcTu)
+
+###  Asciinema rec (GCD on work) :
+https://asciinema.org/a/68b9Ss8X1NW9gn46LkcDeLn9T
