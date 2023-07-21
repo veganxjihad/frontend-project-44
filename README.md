@@ -7,8 +7,11 @@
 ### Asciinema rec (Even Numbers) :
 (https://asciinema.org/a/G6QPz9gX6sZaPz64oV7os1qUN)
 
-### Asciinema rec (Calculator on work) :
+### Asciinema rec (Calculator Game on work) :
 (https://asciinema.org/a/e1lcsMKUnR3zs8JEEEIGXdcTu)
 
-###  Asciinema rec (GCD on work) :
+###  Asciinema rec (GCD Game on work) :
 https://asciinema.org/a/68b9Ss8X1NW9gn46LkcDeLn9T
+
+### Asciinema rec (Progression game on Work)
+https://asciinema.org/a/Y0IFGGvgbpS8JA0ouNXZmiQCP
