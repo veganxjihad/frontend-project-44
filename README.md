@@ -15,3 +15,6 @@ https://asciinema.org/a/68b9Ss8X1NW9gn46LkcDeLn9T
 
 ### Asciinema rec (Progression game on Work)
 https://asciinema.org/a/Y0IFGGvgbpS8JA0ouNXZmiQCP
+
+### Asciinema rec (Prime game on Work)
+https://asciinema.org/a/rBKkzGJkt97LCOLh653vjTgmU
