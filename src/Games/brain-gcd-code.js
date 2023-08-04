@@ -7,20 +7,20 @@ const minRange = 0;
 const maxRange = 100;
 
 const getGcd = (a, b) => {
-    while (b !== 0) {
-        [a, b] = [b, a % b];
-}
-return a;
-}
+  while (b !== 0) {
+      [a, b] = [b, a % b];
+  }
+  return a;
+};
 
 const generateRound = () => {
-    const num1 = getRandomNum(minRange, maxRange);
-    const num2 = getRandomNum(minRange,maxRange);
-    const question = `${num1} ${num2}`;
-    const correctAnswer = getGcd(num1, num2).toString();
-    return [question,correctAnswer];
-}
+  const num1 = getRandomNum(minRange, maxRange);
+  const num2 = getRandomNum(minRange, maxRange);
+  const question = `${num1} ${num2}`;
+  const correctAnswer = getGcd(num1, num2).toString();
+  return [question, correctAnswer];
+};
 
 export default () => {
-    run(description, generateRound);
+  run(description, generateRound);
 };
