@@ -1,67 +1,32 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync';
-import greetingUser from "../index.js";
-const name = greetingUser();
+import { getRandomNum, getRandomIndex } from '../utils.js';
+import run from '../index.js';
 
-console.log('What is the result of the expression?');
+const description = 'What is the result of the expression?';
+const operators = ['+', '-', '*'];
+const minRange = 0;
+const maxRange = 50;
 
-// Generate random number
+const calculate = (x, y, operator) => {
+  switch (operator) {
+    case '+':
+      return x + y;
+    case '-':
+      return x - y;
+    case '*':
+      return x * y;
+  }
+};
 
-function getRandomNum(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+const generateRound = () => {
+  const number1 = getRandomNum(minRange, maxRange);
+  const number2 = getRandomNum(minRange, maxRange);
+  const operator = operators[getRandomIndex(operators)];
+  const question = `${number1} ${operator} ${number2}`;
+  const correctAnswer = calculate(number1, number2, operator).toString();
+  return [question, correctAnswer];
+};
 
-// Generate random operator
-
-function getRandomOperator() {
-    const operators = ['+', '-' , '*'];
-    const randomIndex = getRandomNum(0, operators.length - 1);
-    return operators[randomIndex];
-}
-
-// Calculate Numbers
-
-function calculateExpression(num1, operator, num2) {
-    switch (operator) {
-        case '+':
-            return num1 + num2;
-        case '-':
-            return num1 - num2;
-        case '*':
-            return num1 * num2;
-        default:
-            NaN
-    }
-}
-
-// Start play calculator game
-
-export default function playCalculatorGames(name) {
-    const maxRound = 3;
-    let currentRound = 0;
-
-    while (currentRound < maxRound) {
-        const num1 = getRandomNum(1, 10);
-        const num2  = getRandomNum(1, 10);
-        const operator = getRandomOperator();
-        const expression = `${num1} ${operator} ${num2}`;
-        const correctAnswer = calculateExpression(num1, operator, num2);
-
-        console.log(`Question: ${expression}`);
-        const userAnswer = readlineSync.question('Your answer: ');
-
-        if (Number(userAnswer) === correctAnswer) {
-            console.log('Correct!');
-        } else {
-            console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${correctAnswer}`);
-            console.log(`Let's try again, ${name}!`);
-            return;
-        }
-
-        currentRound++;
-    }
-
-    console.log(`Congratulations, ${name}!`);  
-}
-
-playCalculatorGames(name);
+export default () => {
+  run(description, generateRound);
+};

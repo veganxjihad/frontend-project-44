@@ -1,54 +1,35 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync';
-import greetingUser from "../index.js";
-const name = greetingUser();
+import { getRandomNum, getRandomIndex } from '../utils.js';
+import run from '../index.js';
 
-console.log('What number is missing in the progression?');
+const description = 'What number is missing in the progression?';
+const minLength = 5;
+const maxLength = 10;
+const minRange = 1;
+const maxRange = 100;
+const minStep = 1;
+const maxStep = 10;
 
-function generateProgression() {
-    
-// Generate progression length
+const buildProgression = (length, start, step) => {
+  const progression = [];
+  for (let i = start; progression.length < length; i += step) {
+    progression.push(i);
+  }
+  return progression;
+};
 
-const progressionLength = Math.floor(Math.random() * 6) + 5;
+const generateRound = () => {
+  const length = getRandomNum(minLength, maxLength);
+  const start = getRandomNum(minRange, maxRange);
+  const step = getRandomNum(minStep, maxStep);
+  const progression = buildProgression(length, start, step);
+  const indexHiddenNumber = getRandomIndex(progression);
+  const correctAnswer = progression[indexHiddenNumber].toString();
+  progression[indexHiddenNumber] = '..';
+  const question = progression.join(' ');
+  return [question, correctAnswer];
+};
 
-//Generate ramdom start and step of progression
-
-const startNumber = Math.floor(Math.random() * 50) + 1;
-const step = Math.floor(Math.random() * 10) + 1;
-
-// Create an array
-
-const progression = Array.from({length: progressionLength}, (_, i) => startNumber + i * step);
-
-// Create random position
-
-const hiddenIndex = Math.floor(Math.random() * progressionLength);
-const hiddenNumber = progression[hiddenIndex];
-progression[hiddenIndex] = '..';
-const progressionStr = progression.join(' ');
-return { progressionStr, hiddenNumber };
-}
-
-// Get Play Progression Game
-
-export default function playPrograssionGame(name) {
-    const numRounds = 3;
-
-    for (let i = 0; i < numRounds; i++) {
-
-        const { progressionStr, hiddenNumber } = generateProgression();
-        console.log(`Question: ${progressionStr}`);
-        const userAnswer = readlineSync.question(`Your answer: `);
-
-        if (userAnswer === hiddenNumber.toString()) {
-            console.log('Correct!');
-        } else {
-            console.log(`${userAnswer} is wrong answer ;(. Correct answer was ${hiddenNumber}`);
-            console.log(`Let's try again1, ${name}!`);
-            return;
-        }
-    }
-    console.log(`Congratulations, ${name}!`)
-}
-
-playPrograssionGame(name);
+export default () => {
+  run(description, generateRound);
+};

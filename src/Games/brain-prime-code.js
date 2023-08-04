@@ -1,19 +1,12 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync';
-import greetingUser from "../index.js";
-const name = greetingUser();
+import { getRandomNum } from '../utils.js';
+import run from '../index.js';
 
-console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const minRange = 0;
+const maxRange = 100;
 
-// Generate random number
-
-function getRandomNum(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-// Checking number is prime
-
-function isPrime(num) {
+const isPrime = (num) => {
     if (num <= 1) {
         return false;
     }
@@ -24,30 +17,13 @@ function isPrime(num) {
     }
         return true;   
     }
+const generateRound = () => {
+    const num = getRandomNum(minRange, maxRange);
+    const question = num.toString();
+    const correctAnswer = isPrime(num) ? "yes" : "no";
+    return [question, correctAnswer];
+};
 
-// Start game check prime numbers
-
-export default function playGame(name) {
-let correctAnswerCount = 0;
-const maxRound = 3;
-
-for (let round = 0; round < maxRound; round++) {
-    const randomNum = getRandomNum(1, 10);
-    const correctAnswer = isPrime(randomNum) ? 'yes' : 'no';
-
-    console.log(`Question: ${randomNum}`);
-    const userAnswer = readlineSync.question('Your answer: ');
-    if (userAnswer.toLowerCase() === correctAnswer) {
-        console.log('Correct!');
-        correctAnswerCount++;
-    } else {
-        console.log(`'${userAnswer.toLowerCase()}' is wrong answer ;(. Correct answer was ${isPrime(randomNum) ? "'yes'" : "'no'"}`)
-        console.log(`Let's try again, ${name}!`);
-        break;
-    }
-    if(correctAnswerCount === 3) {
-        console.log(`Congratulations, ${name}!`);
-    }
-}
-}
-playGame(name);
+export default () => {
+    run(description, generateRound);
+};

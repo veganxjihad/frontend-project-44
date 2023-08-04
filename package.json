@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
-  "description": "[![Actions Status](https://github.com/veganxjihad/frontend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/veganxjihad/frontend-project-44/actions)",
+  "description": "Project 'Mind Games' - includes a small set of mathematical games created in Java Script",
   "main": "index.js",
   "bin": {
     "brain-games": "bin/brain-games.js",
@@ -19,7 +19,7 @@
     "type": "git",
     "url": "git+https://github.com/veganxjihad/frontend-project-44.git"
   },
-  "author": "",
+  "author": "Evgeny Koshkin",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/veganxjihad/frontend-project-44/issues"
