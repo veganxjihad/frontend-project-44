@@ -10,13 +10,13 @@ const isPrime = (num) => {
   if (num <= 1) {
     return false;
   }
-  for (let i = 2; i <= Math.sqrt(num); i++) {
-      if (num % i === 0) {
-      return false;  
-      }
+  for (let i = 2; i <= Math.sqrt(num); i = i + 1) {
+    if (num % i === 0) {
+    return false; 
     }
-      return true;
-    };
+  }
+    return true;
+  };
 
 const generateRound = () => {
   const num = getRandomNum(minRange, maxRange);

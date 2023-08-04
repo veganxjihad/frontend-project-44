@@ -16,7 +16,7 @@ const calculate = (x, y, operator) => {
     case '*':
       return x * y;
     default:
-        throw new Error(`There is no such operator like '${operator}'!`);
+      throw new Error(`There is no such operator like '${operator}'!`);
   }
 };
 
