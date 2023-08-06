@@ -1,11 +1,9 @@
 #!/usr/bin/env node
-import { getRandomNum, getRandomIndex } from '../utils.js';
+import { getRandomNum } from '../utils.js';
 import run from '../index.js';
 
 const description = 'What is the result of the expression?';
 const operators = ['+', '-', '*'];
-const minRange = 0;
-const maxRange = 50;
 
 const calculate = (x, y, operator) => {
   switch (operator) {
@@ -21,9 +19,9 @@ const calculate = (x, y, operator) => {
 };
 
 const generateRound = () => {
-  const number1 = getRandomNum(minRange, maxRange);
-  const number2 = getRandomNum(minRange, maxRange);
-  const operator = operators[getRandomIndex(operators)];
+  const number1 = getRandomNum(0, 50);
+  const number2 = getRandomNum(0, 50);
+  const operator = operators[getRandomNum(0, 2)];
   const question = `${number1} ${operator} ${number2}`;
   const correctAnswer = calculate(number1, number2, operator).toString();
   return [question, correctAnswer];

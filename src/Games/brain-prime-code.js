@@ -3,8 +3,6 @@ import { getRandomNum } from '../utils.js';
 import run from '../index.js';
 
 const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
-const minRange = 0;
-const maxRange = 100;
 
 const isPrime = (num) => {
   if (num <= 1) {
@@ -19,7 +17,7 @@ const isPrime = (num) => {
 };
 
 const generateRound = () => {
-  const num = getRandomNum(minRange, maxRange);
+  const num = getRandomNum(0, 100);
   const question = num.toString();
   const correctAnswer = isPrime(num) ? 'yes' : 'no';
   return [question, correctAnswer];
