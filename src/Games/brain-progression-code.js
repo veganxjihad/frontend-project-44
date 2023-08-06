@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { getRandomNum } from '../utils.js';
+import getRandomNum from '../utils.js';
 import run from '../index.js';
 
 const description = 'What number is missing in the progression?';
